@@ -1,19 +1,17 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
 
+$(function () {
+// Added code to display the current date in the header.
   var current = dayjs("");
   var current = dayjs();
   $('#currentDay').text(current.format('MMM D YYYY hh:mm a'));
-  
+// Event listner for save and input.
   $('.saveBtn').on  ('click', function(){
     var text= $(this).siblings(".description").val();
-    var time=$(this).parent().attr("id");
+    var time= $(this).parent().attr("id");
     localStorage.setItem(time, text);
   })
   
-  
+//This section changes the color of past, present and future.
   function exactTime(){
     var currentTime= dayjs().hour();
     $(".time-block").each(function(){
@@ -38,6 +36,8 @@ $(function () {
     })
    
   }
+
+  //Local storage per hour block inwhich it is restored.
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -67,4 +67,4 @@ $(function () {
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
-    // TODO: Add code to display the current date in the header of the page.
+    // TODO:  of the page.
